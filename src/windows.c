@@ -9,7 +9,7 @@
 int window(void)
 {
     // Définition de la taille et des paramètres de la fenêtre
-    sfVideoMode mode = {1000, 1000, 32};
+    sfVideoMode mode = {1920, 1080, 32};
 
     // Création de la fenêtre
     sfRenderWindow *window = sfRenderWindow_create(mode,
@@ -18,7 +18,7 @@ int window(void)
                                                    NULL);
 
     // Set sprite
-    sfSprite *background = createSprite((sfVector2f){100, 100}, "assets/pictures/background.png", (sfVector2f){100, -100}, (sfIntRect){50,50,80,80});
+    sfSprite *background = createSprite((sfVector2f){0, 0}, "assets/pictures/background.png", (sfVector2f){1.333f,1.35f}, (sfIntRect){0,0,1440,800});
 
     // Limite de FPS
     sfRenderWindow_setFramerateLimit(window, 60);
