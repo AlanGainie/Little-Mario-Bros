@@ -46,7 +46,7 @@ int my_strn(char const *str);
 char *my_strncpy(char *dest, char const *src, int n);
 int my_swap(int *a, int *b);
 float volume(float vol);
-sfSprite *createSprite(sfVector2f setPossition, char *img, sfVector2f setScale);
+sfSprite *createSprite(sfVector2f setPossition, char *img, sfVector2f setScale, sfIntRect setRect);
 int window(void);
 
 #endif
