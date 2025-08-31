@@ -17,6 +17,12 @@ int main(void)
                                                    "Fenetre CSFML",
                                                    sfResize | sfClose,
                                                    NULL);
+    // sprite
+    sfSprite *background = sfSprite_create();
+    sfTexture *backgroundtexture = sfTexture_createFromFile("assets/pictures/background.png", NULL);
+    // jsp
+    sfSprite_setTexture(background,backgroundtexture, sfTrue);
+    sfSprite_setPosition(background, (sfVector2f){100, 100});
 
     // Limite de FPS
     sfRenderWindow_setFramerateLimit(window, 60);
@@ -37,10 +43,12 @@ int main(void)
         sfRenderWindow_clear(window, sfBlack);
 
         // Afficher le contenu
+        sfRenderWindow_drawSprite(window, background, NULL);
         sfRenderWindow_display(window);
     }
 
     // Détruire la fenêtre à la fin
+    sfRenderWindow_destroy(background);
     sfRenderWindow_destroy(window);
     return 0;
 }
