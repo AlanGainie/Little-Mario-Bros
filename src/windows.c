@@ -8,8 +8,12 @@
 
 int window(void)
 {
+    //sfVector2f mouv;
+    float x = 50;
+    float y = 50;
     // Définition de la taille et des paramètres de la fenêtre
     sfVideoMode mode = {1920, 1080, 32};
+
 
     // Création de la fenêtre
     sfRenderWindow *window = sfRenderWindow_create(mode,
@@ -19,7 +23,7 @@ int window(void)
 
     // Set sprite
     sfSprite *background = createSprite((sfVector2f){0, 0}, "assets/pictures/background.png", (sfVector2f){1.333f,1.35f}, (sfIntRect){0,0,1440,800});
-    sfSprite *rat = createSprite((sfVector2f){50,50}, "assets/pictures/sprites/rat.png",(sfVector2f){1,1},(sfIntRect){2,2,60,60});
+    sfSprite *rat = createSprite((sfVector2f){x, y}, "assets/pictures/sprites/rat.png",(sfVector2f){1,1},(sfIntRect){2,2,60,60});
 
     // Limite de FPS
     sfRenderWindow_setFramerateLimit(window, 60);
@@ -34,6 +38,7 @@ int window(void)
         {
             if (event.type == sfEvtClosed)
                 sfRenderWindow_close(window);
+            if (event.type == sfEvtKeyPressed && event.key.code == sfKeyA){x = x + 15.0; my_printf("+mouv =%f", x);sfSprite_setPosition(rat, (sfVector2f){x, y});}
         }
 
         // Effacer la fenêtre avec une couleur noire
@@ -47,6 +52,7 @@ int window(void)
 
     // Détruire la fenêtre à la fin
     sfSprite_destroy(background);
+    sfSprite_destroy(rat);
     sfRenderWindow_destroy(window);
     return 0;
 }
