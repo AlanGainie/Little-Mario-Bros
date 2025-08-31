@@ -20,5 +20,5 @@ Le but de se projet est de faire une sorte de petit mario bros afin de se remetr
 -> Rajoutter des options
 -> Faire des chargements de niveaux personnaliser
 
----- Hardcore
+---- Hardcoreh
 -> Ajouter des énemie
