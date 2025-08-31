@@ -1,4 +1,4 @@
-#include "windows.c"
+#include "../include/my.h"
 
 int main(void)
 {

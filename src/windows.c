@@ -4,8 +4,7 @@
 
 // Rapelle : gcc windows.c -o windows -lcsfml-graphics -lcsfml-window -lcsfml-system ./windows
 
-#include <SFML/Graphics.h>
-#include <SFML/Window.h>
+#include "../include/my.h"
 
 int window(void)
 {
@@ -17,12 +16,9 @@ int window(void)
                                                    "Fenetre CSFML",
                                                    sfResize | sfClose,
                                                    NULL);
-    // sprite
-    sfSprite *background = sfSprite_create();
-    sfTexture *backgroundtexture = sfTexture_createFromFile("assets/pictures/background.png", NULL);
-    // jsp
-    sfSprite_setTexture(background,backgroundtexture, sfTrue);
-    sfSprite_setPosition(background, (sfVector2f){100, 100});
+
+    // Set sprite
+    sfSprite *background = createSprite((sfVector2f){100, 100}, "assets/pictures/background.png");
 
     // Limite de FPS
     sfRenderWindow_setFramerateLimit(window, 60);
@@ -48,7 +44,7 @@ int window(void)
     }
 
     // Détruire la fenêtre à la fin
-    sfRenderWindow_destroy(background);
+    sfSprite_destroy(background);
     sfRenderWindow_destroy(window);
     return 0;
 }

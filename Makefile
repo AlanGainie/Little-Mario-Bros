@@ -6,6 +6,8 @@
 ##
 
 SRC 	= 	src/windows.c \
+			src/setsprite.c \
+			src/main.c \
 
 BUILD_DIR	=	build
 
