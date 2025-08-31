@@ -7,7 +7,7 @@
 #include <SFML/Graphics.h>
 #include <SFML/Window.h>
 
-int main(void)
+int window(void)
 {
     // Définition de la taille et des paramètres de la fenêtre
     sfVideoMode mode = {800, 600, 32};
