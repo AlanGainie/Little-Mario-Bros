@@ -19,6 +19,7 @@ int window(void)
 
     // Set sprite
     sfSprite *background = createSprite((sfVector2f){0, 0}, "assets/pictures/background.png", (sfVector2f){1.333f,1.35f}, (sfIntRect){0,0,1440,800});
+    sfSprite *rat = createSprite((sfVector2f){50,50}, "assets/pictures/sprites/rat.png",(sfVector2f){1,1},(sfIntRect){2,2,60,60});
 
     // Limite de FPS
     sfRenderWindow_setFramerateLimit(window, 60);
@@ -40,6 +41,7 @@ int window(void)
 
         // Afficher le contenu
         sfRenderWindow_drawSprite(window, background, NULL);
+        sfRenderWindow_drawSprite(window, rat, NULL);
         sfRenderWindow_display(window);
     }
 
