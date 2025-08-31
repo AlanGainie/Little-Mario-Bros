@@ -38,3 +38,25 @@ Dans ce projet ont utilise github dans se but nous avons besoin des commandes su
 
         git pull -> Pour récupérer le contenue du git
         git merge -> Pour rassembler le contenue local (tien) et celui du git
+
+# Etat du projet
+
+Ce dimanche 31 aout nous avons débuter la création du jeux vidéo par la mise en place d'un background. Dans un premier temps static mais à la taille de notre fenètre et dans un second temps plus tard animer sous la forme d'une paralaxe.
+
+Pour ce faire nous avons du créer une fonction qui définis les paramètres de base des sprites:
+```C
+// Etat de la fonction le 31/08
+
+#include "../include/my.h"
+
+// Ma fonction créer un sprite
+sfSprite *createSprite(sfVector2f possition, char *img)
+{
+    sfSprite *constructsprite = sfSprite_create();
+    sfTexture *constructspritetexture = sfTexture_createFromFile(img, NULL);
+
+    sfSprite_setTexture(constructsprite, constructspritetexture, sfTrue);
+    sfSprite_setPosition(constructsprite, possition);
+    return constructsprite;
+}
+```
