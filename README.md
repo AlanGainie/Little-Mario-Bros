@@ -60,3 +60,42 @@ sfSprite *createSprite(sfVector2f possition, char *img)
     return constructsprite;
 }
 ```
+
+Après la session de code du 31 Yaouen à pue travailler sur les composants Sprite afin d'améliorer le system et à aussi déduis la taille du background depuis celle de la fenêtre. Ce qui donne quelque chose comme :
+
+![Jeux_vidéo_image_du_01/09](/md/Jeux_vidéo_image_du_01_09.png)
+
+Pour ce rendu il à du rajouter une limite de FPS :
+```C
+// Limite de FPS
+sfRenderWindow_setFramerateLimit(window, 60);
+```
+
+Rajouter le sprite du personnage :
+```C
+// sfVector2f mouv;
+    float x = 50;
+    float y = 50;
+sfSprite *rat = createSprite((sfVector2f){x, y}, "assets/pictures/sprites/rat.png", (sfVector2f){1, 1}, (sfIntRect){2, 2, 60, 60});
+```
+
+Celui-ci à une possition dynamique afin de lui permettre de changer lors du jeux. C'est un très bon réflexe.
+
+```C
+//Voici le setsprite du 01/09
+
+#include "../include/my.h"
+
+// Ma fonction créer un sprite
+sfSprite *createSprite(sfVector2f setPossition, char *img, sfVector2f setScale, sfIntRect setRect)
+{
+    sfSprite *constructsprite = sfSprite_create();
+    sfTexture *constructspritetexture = sfTexture_createFromFile(img, NULL);
+
+    sfSprite_setTexture(constructsprite, constructspritetexture, sfTrue);
+    sfSprite_setPosition(constructsprite, setPossition);
+    sfSprite_setScale(constructsprite, setScale);
+    sfSprite_setTextureRect(constructsprite, setRect);
+    return constructsprite;
+}
+```
