@@ -8,8 +8,9 @@ int window(void)
 {
     // TODO: Rendre les noms de variable x et y plus clair et si c'est des floats mettre un chiffre à virgule
     //  sfVector2f mouv;
-    float x = 50;
-    float y = 50;
+    float x = 50.0;
+    float y = 50.0;
+
     // Définition de la taille et des paramètres de la fenêtre
     sfVideoMode mode = {1920, 1080, 32};
 
@@ -18,6 +19,12 @@ int window(void)
                                                    "Fenetre CSFML",
                                                    sfResize | sfClose,
                                                    NULL);
+    
+    // set icon
+    sfImage *icon = sfImage_createFromFile("assets/pictures/icon.png");
+    const sfUint8 *pixels = sfImage_getPixelsPtr(icon);
+    sfVector2u sizeicon = sfImage_getSize(icon);
+    sfRenderWindow_setIcon(window, (unsigned int)16, (unsigned int)16, pixels);
 
     // Set sprite
     sfSprite *background = createSprite((sfVector2f){0, 0}, "assets/pictures/background.png", (sfVector2f){1.333f, 1.35f}, (sfIntRect){0, 0, 1440, 800});
@@ -36,11 +43,39 @@ int window(void)
         {
             if (event.type == sfEvtClosed)
                 sfRenderWindow_close(window);
+            if (event.type == sfEvtKeyPressed && event.key.code == sfKeyD)
+            {
+                if (x <= 1865.0)
+                {
+                x = x + 15.0;
+                my_printf("+mouvXD =%f", x);
+                sfSprite_setPosition(rat, (sfVector2f){x, y});
+                }
+            }
             if (event.type == sfEvtKeyPressed && event.key.code == sfKeyA)
             {
-                x = x + 15.0;
-                my_printf("+mouv =%f", x);
+                if (x >= -0.0)
+                {
+                x = x - 15.0;
+                my_printf("+mouvXA =%f", x);
                 sfSprite_setPosition(rat, (sfVector2f){x, y});
+                }
+            }
+            if (event.type == sfEvtKeyPressed && event.key.code == sfKeyZ)
+                if (y >= -0.0)
+                {
+                y = y - 15.0;
+                my_printf("+mouvYZ =%f", y);
+                sfSprite_setPosition(rat, (sfVector2f){x, y});
+                }
+            if (event.type == sfEvtKeyPressed && event.key.code == sfKeyS)
+            {
+                if (y <= 1005.0)
+                {
+                y = y + 15.0;
+                my_printf("+mouvYS =%f", y);
+                sfSprite_setPosition(rat, (sfVector2f){x, y});
+                }
             }
         }
 
