@@ -12,6 +12,7 @@
 #ifndef MY_H_
 #define MY_H_
 
+#define MILLION = 1000000.0f;
 typedef struct intarray
 {
     unsigned int col;

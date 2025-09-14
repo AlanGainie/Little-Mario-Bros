@@ -27,17 +27,24 @@ int window(void)
     sfRenderWindow_setIcon(window, (unsigned int)16, (unsigned int)16, pixels);
 
     // Set sprite
-    sfSprite *background = createSprite((sfVector2f){0, 0}, "assets/pictures/background.png", (sfVector2f){1.333f, 1.35f}, (sfIntRect){0, 0, 1440, 800});
+    sfSprite *background = createSprite((sfVector2f){0, 0}, "assets/pictures/background.png", (sfVector2f){1.333, 1.333}, (sfIntRect){0, 0, 1440, 800});
     sfSprite *rat = createSprite((sfVector2f){x, y}, "assets/pictures/sprites/rat.png", (sfVector2f){1, 1}, (sfIntRect){2, 2, 60, 60});
-    sfSprite *rat2 = createSprite((sfVector2f){x, y}, "assets/pictures/sprites/rat.png", (sfVector2f){1, 1}, (sfIntRect){240, 0, 60, 60});
+    //sfSprite *rat2 = createSprite((sfVector2f){x, y}, "assets/pictures/sprites/rat.png", (sfVector2f){1, 1}, (sfIntRect){2, 132, 60, 60});
 
     // Limite de FPS
     sfRenderWindow_setFramerateLimit(window, 60);
 
     // Boucle principale
+    int setleft = 2;
     while (sfRenderWindow_isOpen(window))
     {
         sfEvent event;
+
+        // rat.setRect;
+        if (setleft != 122){
+            sfSprite_setTextureRect(rat, (sfIntRect){setleft, 132, 60, 60});
+            setleft = setleft + 60;
+        } else {setleft = 2;}
 
         // Gestion des événements
         while (sfRenderWindow_pollEvent(window, &event))
@@ -86,7 +93,7 @@ int window(void)
         // Afficher le contenu
         sfRenderWindow_drawSprite(window, background, NULL);
         sfRenderWindow_drawSprite(window, rat, NULL);
-        sfRenderWindow_drawSprite(window, rat2, NULL);
+        //sfRenderWindow_drawSprite(window, rat2, NULL);
         sfRenderWindow_display(window);
     }
 
