@@ -34,6 +34,9 @@ int window(void)
     // Limite de FPS
     sfRenderWindow_setFramerateLimit(window, 60);
 
+    // Set clock
+    sfClock *clock = sfClock_create();
+
     // Boucle principale
     int setleft = 2;
     while (sfRenderWindow_isOpen(window))
@@ -43,7 +46,8 @@ int window(void)
         // rat.setRect;
         if (setleft != 122){
             sfSprite_setTextureRect(rat, (sfIntRect){setleft, 132, 60, 60});
-            setleft = setleft + 60;
+            sfClock_getElapsedTime(clock);
+            if (clock >= 1 / 4) {setleft = setleft + 60; sfClock_restart(clock);}
         } else {setleft = 2;}
 
         // Gestion des événements
@@ -101,6 +105,7 @@ int window(void)
     // Détruire la fenêtre à la fin
     sfSprite_destroy(background);
     sfSprite_destroy(rat);
+    sfClock_destroy(clock);
     sfRenderWindow_destroy(window);
     return 0;
 }
