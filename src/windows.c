@@ -8,8 +8,8 @@ int window(void)
 {
     // TODO: Rendre les noms de variable x et y plus clair et si c'est des floats mettre un chiffre à virgule
     //  sfVector2f mouv;
-    float x = 50.0;
-    float y = 50.0;
+    float position_abscice_sprite_rat = 50.0;
+    float position_ordonner_sprite_rat = 50.0;
 
     // Définition de la taille et des paramètres de la fenêtre
     sfVideoMode mode = {1920, 1080, 32};
@@ -28,7 +28,7 @@ int window(void)
 
     // Set sprite
     sfSprite *background = createSprite((sfVector2f){0, 0}, "assets/pictures/background.png", (sfVector2f){1.333, 1.333}, (sfIntRect){0, 0, 1440, 800});
-    sfSprite *rat = createSprite((sfVector2f){x, y}, "assets/pictures/sprites/rat.png", (sfVector2f){1, 1}, (sfIntRect){2, 2, 60, 60});
+    //sfSprite *rat = createSprite((sfVector2f){position_abscice_sprite_rat, position_ordonner_sprite_rat}, "assets/pictures/sprites/rat.png", (sfVector2f){1, 1}, (sfIntRect){2, 2, 60, 60});
     //sfSprite *rat2 = createSprite((sfVector2f){x, y}, "assets/pictures/sprites/rat.png", (sfVector2f){1, 1}, (sfIntRect){2, 132, 60, 60});
 
     // Limite de FPS
@@ -36,7 +36,7 @@ int window(void)
 
     // Set clock
     sfClock *clock = sfClock_create();
-
+    // sprite_t rat = {(){}; (){}; (){}; (){};};
     // Boucle principale
     int setleft = 2;
     while (sfRenderWindow_isOpen(window))
@@ -57,36 +57,36 @@ int window(void)
                 sfRenderWindow_close(window);
             if (event.type == sfEvtKeyPressed && event.key.code == sfKeyD)
             {
-                if (x <= 1865.0)
+                if (position_abscice_sprite_rat <= 1865.0)
                 {
-                x = x + 15.0;
-                my_printf("+mouvXD =%f", x);
-                sfSprite_setPosition(rat, (sfVector2f){x, y});
+                position_abscice_sprite_rat = position_abscice_sprite_rat + 15.0;
+                my_printf("+mouvXD =%f", position_abscice_sprite_rat);
+                sfSprite_setPosition(rat, (sfVector2f){position_abscice_sprite_rat, position_ordonner_sprite_rat});
                 }
             }
             if (event.type == sfEvtKeyPressed && event.key.code == sfKeyA)
             {
-                if (x >= -0.0)
+                if (position_abscice_sprite_rat >= -0.0)
                 {
-                x = x - 15.0;
-                my_printf("+mouvXA =%f", x);
-                sfSprite_setPosition(rat, (sfVector2f){x, y});
+                position_abscice_sprite_rat = position_abscice_sprite_rat - 15.0;
+                my_printf("+mouvXA =%f", position_abscice_sprite_rat);
+                sfSprite_setPosition(rat, (sfVector2f){position_abscice_sprite_rat, position_ordonner_sprite_rat});
                 }
             }
             if (event.type == sfEvtKeyPressed && event.key.code == sfKeyZ)
-                if (y >= -0.0)
+                if (position_ordonner_sprite_rat >= -0.0)
                 {
-                y = y - 15.0;
-                my_printf("+mouvYZ =%f", y);
-                sfSprite_setPosition(rat, (sfVector2f){x, y});
+                position_ordonner_sprite_rat = position_ordonner_sprite_rat - 15.0;
+                my_printf("+mouvYZ =%f", position_ordonner_sprite_rat);
+                sfSprite_setPosition(rat, (sfVector2f){position_abscice_sprite_rat, position_ordonner_sprite_rat});
                 }
             if (event.type == sfEvtKeyPressed && event.key.code == sfKeyS)
             {
-                if (y <= 1005.0)
+                if (position_ordonner_sprite_rat <= 1005.0)
                 {
-                y = y + 15.0;
-                my_printf("+mouvYS =%f", y);
-                sfSprite_setPosition(rat, (sfVector2f){x, y});
+                position_ordonner_sprite_rat = position_ordonner_sprite_rat + 15.0;
+                my_printf("+mouvYS =%f", position_ordonner_sprite_rat);
+                sfSprite_setPosition(rat, (sfVector2f){position_abscice_sprite_rat, position_ordonner_sprite_rat});
                 }
             }
         }

@@ -1,4 +1,5 @@
 #include "../include/my.h"
+#include <stdlib.h>
 
 // Ma fonction créer un sprite
 sfSprite *createSprite(sfVector2f setPossition, char *img, sfVector2f setScale, sfIntRect setRect)

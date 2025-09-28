@@ -19,6 +19,16 @@ typedef struct intarray
     unsigned int ligne;
 } intarray_t;
 
+typedef struct sprite
+{
+    char *picture;
+    sfVector2f position;
+    sfVector2f decoupage;
+    sfIntRect rect;
+    sfClock *clock;
+
+} sprite_t;
+
 int my_putchar(char c);
 int my_put_nbr(int nb);
 int my_conv_flags(const char format, va_list list);
