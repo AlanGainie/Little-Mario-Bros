@@ -19,6 +19,7 @@ typedef struct intarray
     unsigned int ligne;
 } intarray_t;
 
+// char *picture\nsfVector2f position\nsfIntRect rect\nsfClock *clock
 typedef struct sprite
 {
     char *picture;
@@ -26,6 +27,8 @@ typedef struct sprite
     sfVector2f decoupage;
     sfIntRect rect;
     sfClock *clock;
+    sfSprite *constructsprite;
+    sfTexture *constructspritetexture;
 
 } sprite_t;
 
@@ -57,7 +60,7 @@ int my_strn(char const *str);
 char *my_strncpy(char *dest, char const *src, int n);
 int my_swap(int *a, int *b);
 float volume(float vol);
-sfSprite *createSprite(sfVector2f setPossition, char *img, sfVector2f setScale, sfIntRect setRect);
+sprite_t createSprite(sfVector2f setPossition, char *img, sfVector2f setScale, sfIntRect setRect);
 int window(void);
 
 #endif

@@ -2,16 +2,25 @@
 #include <stdlib.h>
 
 // Ma fonction créer un sprite
-sfSprite *createSprite(sfVector2f setPossition, char *img, sfVector2f setScale, sfIntRect setRect)
+sprite_t createSprite(sfVector2f setPossition, char *img, sfVector2f setScale, sfIntRect setRect)
 {
     sfSprite *constructsprite = malloc(sizeof(sfSprite *));
     constructsprite = sfSprite_create();
-    sfTexture *constructspritetexture = sfTexture_createFromFile(img, NULL);
     sfClock *clock = sfClock_create();
+    sfTexture *constructspritetexture = sfTexture_createFromFile(img, NULL);
+    sprite_t newsprite = {
+            img,
+            setPossition,
+            setScale,
+            setRect,
+            clock,
+            constructsprite,
+            constructspritetexture
+        };
     
-    sfSprite_setTexture(constructsprite, constructspritetexture, sfTrue);
-    sfSprite_setPosition(constructsprite, setPossition);
-    sfSprite_setScale(constructsprite, setScale);
-    sfSprite_setTextureRect(constructsprite, setRect);
-    return constructsprite;
+    sfSprite_setTexture(newsprite.constructsprite, newsprite.constructspritetexture, sfTrue);
+    sfSprite_setPosition(newsprite.constructsprite, newsprite.position);
+    sfSprite_setScale(newsprite.constructsprite, newsprite.decoupage);
+    sfSprite_setTextureRect(newsprite.constructsprite, newsprite.rect);
+    return newsprite;
 }
