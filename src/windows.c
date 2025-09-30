@@ -38,7 +38,6 @@ int window(void)
     // Boucle principale
     rat.rect.left = 2;
     rat.rect.top = 132;
-    sfClock *clock = sfClock_create();
     while (sfRenderWindow_isOpen(window))
     {
         sfEvent event;
@@ -46,8 +45,8 @@ int window(void)
         // rat.setRect;
         if (rat.rect.left != 122){
             sfSprite_setTextureRect(rat.constructsprite, rat.rect);
-            sfClock_getElapsedTime(clock);
-            if (clock >= 1 / 4) {rat.rect.left = rat.rect.left + 60; sfClock_restart(clock);}
+            sfClock_getElapsedTime(rat.clock);
+            if (rat.clock >= 1 / 4) {rat.rect.left = rat.rect.left + 60; sfClock_restart(rat.clock);}
         } else {rat.rect.left = 2;}
 
         // Gestion des événements
@@ -105,7 +104,7 @@ int window(void)
     // Détruire la fenêtre à la fin
     sfSprite_destroy(background.constructsprite);
     sfSprite_destroy(rat.constructsprite);
-    sfClock_destroy(clock);
+    sfClock_destroy(rat.clock);
     sfRenderWindow_destroy(window);
     return 0;
 }
