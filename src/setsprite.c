@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 // Ma fonction créer un sprite
+// TODO: Mettre en place des gestions d'erreurs afin d'éviter de lancer le program avec des erreurs
 sprite_t createSprite(sfVector2f setPossition, char *img, sfVector2f setScale, sfIntRect setRect)
 {
     sfSprite *constructsprite = malloc(sizeof(sfSprite *));
@@ -9,15 +10,14 @@ sprite_t createSprite(sfVector2f setPossition, char *img, sfVector2f setScale, s
     sfClock *clock = sfClock_create();
     sfTexture *constructspritetexture = sfTexture_createFromFile(img, NULL);
     sprite_t newsprite = {
-            img,
-            setPossition,
-            setScale,
-            setRect,
-            clock,
-            constructsprite,
-            constructspritetexture
-        };
-    
+        img,
+        setPossition,
+        setScale,
+        setRect,
+        clock,
+        constructsprite,
+        constructspritetexture};
+
     sfSprite_setTexture(newsprite.constructsprite, newsprite.constructspritetexture, sfTrue);
     sfSprite_setPosition(newsprite.constructsprite, newsprite.position);
     sfSprite_setScale(newsprite.constructsprite, newsprite.decoupage);

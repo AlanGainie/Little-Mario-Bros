@@ -19,7 +19,7 @@ int window(void)
                                                    "Fenetre CSFML",
                                                    sfResize | sfClose,
                                                    NULL);
-    
+
     // set icon
     sfImage *icon = sfImage_createFromFile("assets/pictures/icon.png");
     const sfUint8 *pixels = sfImage_getPixelsPtr(icon);
@@ -29,7 +29,7 @@ int window(void)
     // Set sprite
     sprite_t background = createSprite((sfVector2f){0, 0}, "assets/pictures/background.png", (sfVector2f){1.333, 1.333}, (sfIntRect){0, 0, 1440, 800});
     sprite_t rat = createSprite((sfVector2f){position_abscice_sprite_rat, position_ordonner_sprite_rat}, "assets/pictures/sprites/rat.png", (sfVector2f){1, 1}, (sfIntRect){2, 2, 60, 60});
-    //sfSprite *rat2 = createSprite((sfVector2f){x, y}, "assets/pictures/sprites/rat.png", (sfVector2f){1, 1}, (sfIntRect){2, 132, 60, 60});
+    // sfSprite *rat2 = createSprite((sfVector2f){x, y}, "assets/pictures/sprites/rat.png", (sfVector2f){1, 1}, (sfIntRect){2, 132, 60, 60});
 
     // Limite de FPS
     sfRenderWindow_setFramerateLimit(window, 60);
@@ -43,11 +43,20 @@ int window(void)
         sfEvent event;
 
         // rat.setRect;
-        if (rat.rect.left != 122){
+        if (rat.rect.left != 122)
+        {
             sfSprite_setTextureRect(rat.constructsprite, rat.rect);
             sfClock_getElapsedTime(rat.clock);
-            if (rat.clock >= 1 / 4) {rat.rect.left = rat.rect.left + 60; sfClock_restart(rat.clock);}
-        } else {rat.rect.left = 2;}
+            if (rat.clock >= 1 / 4)
+            {
+                rat.rect.left = rat.rect.left + 60;
+                sfClock_restart(rat.clock);
+            }
+        }
+        else
+        {
+            rat.rect.left = 2;
+        }
 
         // Gestion des événements
         while (sfRenderWindow_pollEvent(window, &event))
@@ -58,34 +67,34 @@ int window(void)
             {
                 if (rat.position.x <= 1865.0)
                 {
-                rat.position.x = rat.position.x + 15.0;
-                my_printf("+mouvXD =%f", rat.position.x);
-                sfSprite_setPosition(rat.constructsprite, rat.position);
+                    rat.position.x = rat.position.x + 15.0;
+                    my_printf("+mouvXD =%f", rat.position.x);
+                    sfSprite_setPosition(rat.constructsprite, rat.position);
                 }
             }
             if (event.type == sfEvtKeyPressed && event.key.code == sfKeyA)
             {
                 if (rat.position.x >= -0.0)
                 {
-                rat.position.x = rat.position.x - 15.0;
-                my_printf("+mouvXA =%f", rat.position.x);
-                sfSprite_setPosition(rat.constructsprite, rat.position);
+                    rat.position.x = rat.position.x - 15.0;
+                    my_printf("+mouvXA =%f", rat.position.x);
+                    sfSprite_setPosition(rat.constructsprite, rat.position);
                 }
             }
             if (event.type == sfEvtKeyPressed && event.key.code == sfKeyZ)
                 if (rat.position.y >= -0.0)
                 {
-                rat.position.y = rat.position.y - 15.0;
-                my_printf("+mouvYZ =%f", rat.position.y);
-                sfSprite_setPosition(rat.constructsprite, rat.position);
+                    rat.position.y = rat.position.y - 15.0;
+                    my_printf("+mouvYZ =%f", rat.position.y);
+                    sfSprite_setPosition(rat.constructsprite, rat.position);
                 }
             if (event.type == sfEvtKeyPressed && event.key.code == sfKeyS)
             {
                 if (rat.position.y <= 1005.0)
                 {
-                rat.position.y = rat.position.y + 15.0;
-                my_printf("+mouvYS =%f", rat.position.y);
-                sfSprite_setPosition(rat.constructsprite, rat.position);
+                    rat.position.y = rat.position.y + 15.0;
+                    my_printf("+mouvYS =%f", rat.position.y);
+                    sfSprite_setPosition(rat.constructsprite, rat.position);
                 }
             }
         }
@@ -96,7 +105,7 @@ int window(void)
         // Afficher le contenu
         sfRenderWindow_drawSprite(window, background.constructsprite, NULL);
         sfRenderWindow_drawSprite(window, rat.constructsprite, NULL);
-        //sfRenderWindow_drawSprite(window, rat2, NULL);
+        // sfRenderWindow_drawSprite(window, rat2, NULL);
         sfRenderWindow_display(window);
     }
 
