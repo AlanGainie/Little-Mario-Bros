@@ -38,6 +38,10 @@ int window(void)
     // Boucle principale
     rat.rect.left = 2;
     rat.rect.top = 132;
+    //sfMicroseconds
+    //sfSeconds
+    //sfTime_asSeconds
+    //sfTime time;
     while (sfRenderWindow_isOpen(window))
     {
         sfEvent event;
@@ -114,6 +118,7 @@ int window(void)
     sfSprite_destroy(background.constructsprite);
     sfSprite_destroy(rat.constructsprite);
     sfClock_destroy(rat.clock);
+    free(rat.constructsprite);
     sfRenderWindow_destroy(window);
     return 0;
 }

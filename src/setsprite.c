@@ -16,7 +16,8 @@ sprite_t createSprite(sfVector2f setPossition, char *img, sfVector2f setScale, s
         setRect,
         clock,
         constructsprite,
-        constructspritetexture};
+        constructspritetexture
+    };
 
     sfSprite_setTexture(newsprite.constructsprite, newsprite.constructspritetexture, sfTrue);
     sfSprite_setPosition(newsprite.constructsprite, newsprite.position);

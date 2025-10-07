@@ -6,6 +6,7 @@
 */
 
 #include <stdarg.h>
+#include <stdlib.h>
 #include <SFML/Audio.h>
 #include <SFML/Graphics.h>
 #include <SFML/Window.h>
